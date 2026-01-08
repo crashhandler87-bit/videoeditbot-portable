@@ -166,12 +166,12 @@ class VideoEditorGUI(QWidget):
         layout.addWidget(self.args_line)
 
         # Button to select the input video file
-        self.file_button = QPushButton("Select Input File", self)
+        self.file_button = QPushButton("Select Input File?", self)
         self.file_button.clicked.connect(self.select_file)
         layout.addWidget(self.file_button)
 
         # Button to run the command
-        self.run_button = QPushButton("Run Command", self)
+        self.run_button = QPushButton("Run Command?", self)
         self.run_button.clicked.connect(self.run_command)
         layout.addWidget(self.run_button)
 
@@ -278,4 +278,5 @@ if __name__ == "__main__":
     apply_stylesheet(app, theme='dark_amber.xml')  # Set the application style to Fusion
     startup = StartupScreen()
     startup.show()
+
     sys.exit(app.exec_())
