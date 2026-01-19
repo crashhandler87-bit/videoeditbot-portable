@@ -492,7 +492,7 @@ def destroy(file, groupData, par, groupNumber = 0, parentPath = "..", newExt = "
 
         def fisheye():
             nonlocal video, audio
-            d['fisheye'] = int(constrain(d['fisheye'], 1, 100))
+            d['fisheye'] = int(constrain(d['fisheye'], 1, 5))
             for i in range(d['fisheye']):
                 video = video.filter("v360" , input = "equirect", output = "ball")
                 video = video.filter("scale", w = width, h = height)
@@ -500,7 +500,7 @@ def destroy(file, groupData, par, groupNumber = 0, parentPath = "..", newExt = "
 
         def defisheye():
             nonlocal video, audio
-            d['defisheye'] = int(constrain(d['defisheye'], 1, 100))
+            d['defisheye'] = int(constrain(d['defisheye'], 1, 5))
             for i in range(d['defisheye']):
                 video = video.filter("v360" , input = "ball", output = "equirect")
                 video = video.filter("scale", w = width, h = height)
@@ -508,7 +508,7 @@ def destroy(file, groupData, par, groupNumber = 0, parentPath = "..", newExt = "
 
         def fisheye2():
             nonlocal video, audio
-            d['fisheye2'] = int(constrain(d['fisheye2'], 1, 100))
+            d['fisheye2'] = int(constrain(d['fisheye2'], 1, 5))
             for i in range(d['fisheye2']):
                 video = video.filter("v360" , input = "equirect", output = "hammer")
                 video = video.filter("scale", w = width, h = height)
@@ -516,7 +516,7 @@ def destroy(file, groupData, par, groupNumber = 0, parentPath = "..", newExt = "
 
         def defisheye2():
             nonlocal video, audio
-            d['defisheye2'] = int(constrain(d['defisheye2'], 1, 100))
+            d['defisheye2'] = int(constrain(d['defisheye2'], 1, 5))
             for i in range(d['defisheye2']):
                 video = video.filter("v360" , input = "hammer", output = "equirect")
                 video = video.filter("scale", w = width, h = height)
@@ -1219,15 +1219,15 @@ def videoEdit(properFileName, args, disallowTimecodeBreak = False, keepExtraFile
         "datamosh"      :[V, int(r(0, 100))      , "dm"],
         "stutter"       :[S, int(r(0, 25))       , "st"],
         "ytp"           :[V, int(r(1, 2))        , "ytp"],
-        "fisheye"       :[V, int(r(1, 100))        , "fe"],
-        "defisheye"       :[V, int(r(1, 100))        , "defe"],
-        "fisheye2"       :[V, int(r(1, 100))        , "fe2"],
+        "fisheye"       :[V, int(r(1, 5))        , "fe"],
+        "defisheye"       :[V, int(r(1, 5))        , "defe"],
+        "fisheye2"       :[V, int(r(1, 5))        , "fe2"],
         "huehsvinvert"        :[V, 1                   , "hue180"],
         "whar"        :[V, 1                   , "wh"],
         "grb"        :[V, 1                   , "grb"],
         "gold"        :[V, 1                   , "gd"],
         "grayscale"        :[V, 1                   , "gray"],
-        "defisheye2"       :[V, int(r(1, 100))        , "defe2"],
+        "defisheye2"       :[V, int(r(1, 5))        , "defe2"],
         "fisheye3"       :[V, int(r(1, 2))        , "fe3"],
         "defisheye3"       :[V, int(r(1, 2))        , "defe3"],
         "clonemosh"     :[V, None                , "cm"],
