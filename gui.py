@@ -2,6 +2,7 @@ import sys
 import shutil
 import json
 import sox
+import yt_dlp
 import os
 import uuid
 import subprocess
@@ -222,8 +223,8 @@ class VideoEditorGUI(QWidget):
             self.status_label.setText(f"Error duplicating file: {e}")
             # Show error popup for file duplication issue
             error_box = QMessageBox()
-            error_box.setIcon(QMessageBox.Critical)
-            error_box.setWindowTitle("File Duplication Error")
+            error_box.setIcon(QMessageBox.Question)
+            error_box.setWindowTitle("File Duplication Failed")
             error_box.setText("Failed to duplicate the video file for editing.")
             error_box.setInformativeText(str(e))
             error_box.setStandardButtons(QMessageBox.Ok)
@@ -246,8 +247,8 @@ class VideoEditorGUI(QWidget):
                 self.status_label.setText("Command executed successfully!")
                 # Show success popup
                 msg_box = QMessageBox()
-                msg_box.setIcon(QMessageBox.Information)
-                msg_box.setWindowTitle("Success")
+                msg_box.setIcon(QMessageBox.Warning)
+                msg_box.setWindowTitle("Warning")
                 msg_box.setText("The command was executed successfully!")
                 msg_box.setStandardButtons(QMessageBox.Ok)
                 msg_box.exec_()
@@ -256,9 +257,9 @@ class VideoEditorGUI(QWidget):
                 self.status_label.setText(f"Error: {error_message}")
                 # Show error popup
                 error_box = QMessageBox()
-                error_box.setIcon(QMessageBox.Critical)
-                error_box.setWindowTitle("Error")
-                error_box.setText("The command failed to execute.")
+                error_box.setIcon(QMessageBox.Question)
+                error_box.setWindowTitle("Failed")
+                error_box.setText("The command failed to execute")
                 error_box.setInformativeText(error_message)
                 error_box.setStandardButtons(QMessageBox.Ok)
                 error_box.exec_()
@@ -266,9 +267,9 @@ class VideoEditorGUI(QWidget):
             self.status_label.setText(f"Exception: {e}")
             # Show exception popup
             exception_box = QMessageBox()
-            exception_box.setIcon(QMessageBox.Critical)
-            exception_box.setWindowTitle("Exception")
-            exception_box.setText("An exception occurred while running the command.")
+            exception_box.setIcon(QMessageBox.Question)
+            exception_box.setWindowTitle("SYSTEM_SERVICE_EXCEPTION")
+            exception_box.setText("An exception occurred while running the command")
             exception_box.setInformativeText(str(e))
             exception_box.setStandardButtons(QMessageBox.Ok)
             exception_box.exec_()
@@ -280,3 +281,4 @@ if __name__ == "__main__":
     startup.show()
 
     sys.exit(app.exec_())
+
